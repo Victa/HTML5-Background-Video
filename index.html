@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Test Background video</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+	body {
+		background:#000;
+		font-family:Helvetica,Arial,Verdan,Sans-Serif;
+		margin:0px;padding:0px;
+		font-size:12px;
+	}
+	h1, h3 {
+		color:#0073EA;margin:0px 0px 5px 0px;
+		padding:0px;
+	}
+	h3 {
+		color:#888;
+	}
+	#video_background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1000;
+		width:100%;
+		height:100%;
+	}
+	#wrapper {
+		z-index:9999;
+		margin:40px;
+	}
+	#corps {
+		width:70%;
+		padding:20px;
+		background:rgba(0,0,0,0.5);
+		color:#FFF;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+	}
+	</style>
+
+</head>
+<body>
+
+<video id="video_background" preload="auto" autoplay="true" loop="loop" >
+	<source src="ciel.mp4" type="video/mp4" /> 
+	<source src="ciel.ogg" type="video/ogg" /> 
+	Background Video
+</video>
+
+<div id="wrapper">
+	<div id="corps">
+		<h1>Hi folks</h1>
+		<h3>Voici un exemple de video en background qui se redimenssione auto.</h3>
+		<p>
+			Nam quibusdam, quos audio sapientes habitos in Graecia, placuisse opinor mirabilia quaedam (sed nihil est quod illi non persequantur argutiis): partim fugiendas esse nimias amicitias, ne necesse sit unum sollicitum esse pro pluribus; satis superque esse sibi suarum cuique rerum, alienis nimis implicari molestum esse; commodissimum esse quam laxissimas habenas habere amicitiae, quas vel adducas, cum velis, vel remittas; caput enim esse ad beate vivendum securitatem, qua frui non possit animus, si tamquam parturiat unus pro pluribus.<br />
+			<br />
+			Nunc vero inanes flatus quorundam vile esse quicquid extra urbis pomerium nascitur aestimant praeter orbos et caelibes, nec credi potest qua obsequiorum diversitate coluntur homines sine liberis Romae.<br />
+			<br />
+		Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.<br />
+		<br />
+		Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+		</p>
+	</div>
+</div>
+
+<script>
+window.onresize = resize; window.onload = resize;
+function resize() {
+	var windowWidth = (window.innerWidth); var windowHeight = (window.innerHeight);
+	var windowProportion = windowWidth / windowHeight;
+	
+	var origWidth = 568; var origHeight = 360;
+	var origProportion = origWidth / origHeight;
+	
+	var proportion = windowHeight / origHeight;
+	if (windowProportion >= origProportion) {
+		proportion = windowWidth / origWidth;
+	}
+	
+	document.getElementById('video_background').style.width = proportion * origWidth+"px";
+	document.getElementById('video_background').style.height = proportion * origHeight+"px";
+}
+</script>
+
+</body>
+</html>
