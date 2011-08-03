@@ -10,7 +10,8 @@ Add the script to your homepage after jquery ``<script src="js/libs/jquery.backg
        
 
 And launch the plugin :
-``
+
+```
 <script>
 	$(document).ready(function() {
 		var videobackground = new $.backgroundVideo('$(body)', {
@@ -22,7 +23,7 @@ And launch the plugin :
 		});             
 	});
 </script>
-``
+```
                        
 ###Examples
 
