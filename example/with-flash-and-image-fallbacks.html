@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>Example with flash and image fallback : jQuery - Background Video</title>
+
+<!--  Loading Modernizr for amazing feature detection  -->
+<script src="js/modernizr.js"></script>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    background: url('media/cloud.jpg') 50% 50% fixed no-repeat;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+  }
+  .no-backgroundsize body {
+    background: none;
+  }
+
+  /* Flash Fallback container */
+  #flash-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+</style>
+<div id="flash-fallback"></div>
+
+<script>
+  // Since mobile won't "autoplay" the video,
+  // We want to exclude them from playing the background HTML5 Video
+  
+  // Exclude the iPad
+  Modernizr.addTest('ipad', function () {
+    return !!navigator.userAgent.match(/iPad/i);
+  });
+
+  // Exclude the iPhone
+  Modernizr.addTest('iphone', function () {
+    return !!navigator.userAgent.match(/iPhone/i);
+  });
+
+  // Exclude the iPod touch
+  Modernizr.addTest('ipod', function () {
+    return !!navigator.userAgent.match(/iPod/i);
+  });
+  
+  // Exclude android phones and tablets
+  Modernizr.addTest('android', function () {
+    return !!navigator.userAgent.match(/android/i);
+  });
+  
+  // Add a  test to Modernizr combining all platforms
+  Modernizr.addTest('excludedplatforms', function () {
+    return (Modernizr.ipad || Modernizr.ipod || Modernizr.iphone || Modernizr.android);
+  });
+  
+  
+  // Specified platforms won't be able to play background video,
+  // But we serve them a nice extensible background image (see CSS).
+  if (!Modernizr.excludedplatforms) {
+    
+    // jQuery needs to be loaded first
+    Modernizr.load({
+      load: ['//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js']
+    });
+    
+    Modernizr.load({
+      
+      // If the platform can play any of these video types…
+      test: Modernizr.video.webm || Modernizr.video.h264 || Modernizr.video.ogg,
+      
+      // We load the jQuery plugin with a few functions
+      yep:  ['../jquery.backgroundvideo.min.js', 'js/background-video.js'],
+      
+      // If none of the above formats are supported,
+      // load the flash fallback with SWFObject
+      nope: ['//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js', 'js/flash-fallback.js']
+    });
+  }
+  
+
+</script>
