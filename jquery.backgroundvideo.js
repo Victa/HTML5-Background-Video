@@ -34,15 +34,17 @@
       }
       html += 'bgvideo</video>';
       $('body').prepend(html);
-      $("#"+plugin.settings.videoid).fadeIn(2000);
+      plugin.videoEl = document.getElementById(plugin.settings.videoid);
+      plugin.$videoEl = $(plugin.videoEl);
+      plugin.$videoEl.fadeIn(2000);
       setProportion();
     }
     
     var setProportion = function () {
       var proportion = getProportion();
-      $("#"+plugin.settings.videoid).width(proportion*plugin.settings.width);
-      $("#"+plugin.settings.videoid).height(proportion*plugin.settings.height);
-
+      plugin.$videoEl.width(proportion*plugin.settings.width);
+      plugin.$videoEl.height(proportion*plugin.settings.height);
+      
       if (typeof plugin.settings.align !== 'undefined') {
         centerVideo();
       }
@@ -63,21 +65,21 @@
     }
     
     var centerVideo = function() {
-      var centerX = (($(window).width() >> 1) - (videoEl.width() >> 1)) | 0;
-      var centerY = (($(window).height() >> 1) - (videoEl.height() >> 1)) | 0;
+      var centerX = (($(window).width() >> 1) - (plugin.$videoEl.width() >> 1)) | 0;
+      var centerY = (($(window).height() >> 1) - (plugin.$videoEl.height() >> 1)) | 0;
 
       if (plugin.settings.align == 'centerXY') {
-        videoEl.css({ 'left': centerX, 'top': centerY });
+        plugin.$videoEl.css({ 'left': centerX, 'top': centerY });
         return;
       }
 
       if (plugin.settings.align == 'centerX') {
-        videoEl.css('left', centerX);
+        plugin.$videoEl.css('left', centerX);
         return;
       }
 
       if (plugin.settings.align == 'centerY') {
-        videoEl.css('top', centerY);
+        plugin.$videoEl.css('top', centerY);
         return;
       }
     }
@@ -85,6 +87,6 @@
     init();
     
     $(window).resize(function() { setProportion(); });
-    $("#"+plugin.settings.videoid).bind('ended', function(){ this.play(); });
+    plugin.$videoEl.bind('ended', function(){ this.play(); });
   }
 })(jQuery);
