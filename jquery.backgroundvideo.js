@@ -42,6 +42,10 @@
       var proportion = getProportion();
       $("#"+plugin.settings.videoid).width(proportion*plugin.settings.width);
       $("#"+plugin.settings.videoid).height(proportion*plugin.settings.height);
+
+      if (typeof plugin.settings.align !== 'undefined') {
+        centerVideo();
+      }
     }
     
     var getProportion = function () {
@@ -58,6 +62,25 @@
       return proportion;
     }
     
+    var centerVideo = function() {
+      var centerX = (($(window).width() >> 1) - (videoEl.width() >> 1)) | 0;
+      var centerY = (($(window).height() >> 1) - (videoEl.height() >> 1)) | 0;
+
+      if (plugin.settings.align == 'centerXY') {
+        videoEl.css({ 'left': centerX, 'top': centerY });
+        return;
+      }
+
+      if (plugin.settings.align == 'centerX') {
+        videoEl.css('left', centerX);
+        return;
+      }
+
+      if (plugin.settings.align == 'centerY') {
+        videoEl.css('top', centerY);
+        return;
+      }
+    }
     
     init();
     
