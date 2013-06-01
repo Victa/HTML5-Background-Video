@@ -5,6 +5,13 @@
 * Released under the MIT, BSD, and GPL Licenses.
 * based on jQuery Plugin Boilerplate 1.3
 */
+/*
+* jQuery Background video plugin for jQuery
+* ---
+* Copyright 2011, Victor Coulon (http://victorcoulon.fr)
+* Released under the MIT, BSD, and GPL Licenses.
+* based on jQuery Plugin Boilerplate 1.3
+*/
 
 (function($) {
 
@@ -33,7 +40,7 @@
         html += '<source src="'+plugin.settings.path+plugin.settings.filename+'.'+plugin.settings.types[i]+'" type="video/'+plugin.settings.types[i]+'" />';
       }
       html += 'bgvideo</video>';
-      $('body').prepend(html);
+      plugin.el.prepend(html);
       plugin.videoEl = document.getElementById(plugin.settings.videoid);
       plugin.$videoEl = $(plugin.videoEl);
       plugin.$videoEl.fadeIn(2000);
