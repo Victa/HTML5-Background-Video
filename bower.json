@@ -1,0 +1,19 @@
+{
+  "name": "background-video",
+  "version": "1.0.0",
+  "description": "HTML 5 video tags as background",
+  "main": "jquery.backgroundvideo.js",
+  "keywords": [
+    "jquery",
+    "html5",
+    "video",
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ]
+}
