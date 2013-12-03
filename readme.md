@@ -2,6 +2,10 @@
 
 Add a background video to your website…
 
+## Download
+
+The full source can be downloaded from the master branch on GitHub (as a zip or gz) or installed via bower (`bower install background-video`).
+
 ## Usage
 
 Add the script to your homepage after jquery `<script src="js/libs/jquery.backgroundvideo.min.js"></script>`
