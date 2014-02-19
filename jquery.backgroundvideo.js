@@ -41,7 +41,10 @@
       plugin.el.prepend(html);
       plugin.videoEl = document.getElementById(plugin.settings.videoid);
       plugin.$videoEl = $(plugin.videoEl);
-      plugin.$videoEl.fadeIn(2000);
+      
+      if(!!plugin.settings.startOnLoad === false)
+	      plugin.$videoEl.fadeIn(2000);
+	  
       setProportion();
     }
 
@@ -93,5 +96,11 @@
 
     $(window).resize(function() { setProportion(); });
     plugin.$videoEl.bind('ended', function(){ this.play(); });
+    
+    if(!!plugin.settings.startOnLoad === true) {
+        plugin.$videoEl.bind('canplay', function(){ plugin.$videoEl.fadeIn(500); });
+        plugin.$videoEl.bind('error', function(){ plugin.$videoEl.show(); });
+    }
+
   }
 })(jQuery);

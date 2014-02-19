@@ -18,9 +18,11 @@ And launch the plugin :
           "align": "centerXY",
           "width": 1280,
           "height": 720,
+          "poster": "media/poster.jpg",
           "path": "media/",
           "filename": "cloud",
-          "types": ["mp4","ogg","webm"]
+          "types": ["mp4","ogg","webm"],
+          "startOnLoad": true
         });
       });
     </script>
