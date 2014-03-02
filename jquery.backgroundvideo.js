@@ -35,7 +35,8 @@
 
       html += 'style="display:none;position:fixed;top:0;left:0;bottom:0;right:0;z-index:-100;width:100%;height:100%;">';
       for(var i=0; i < plugin.settings.types.length; i++) {
-        html += '<source src="'+plugin.settings.path+plugin.settings.filename+'.'+plugin.settings.types[i]+'" type="video/'+plugin.settings.types[i]+'" />';
+      	var vpath = plugin.settings.path[plugin.settings.types[i]] || plugin.settings.path;
+        html += '<source src="'+vpath+plugin.settings.filename+'.'+plugin.settings.types[i]+'" type="video/'+plugin.settings.types[i]+'" />';
       }
       html += 'bgvideo</video>';
       plugin.el.prepend(html);

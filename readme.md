@@ -25,6 +25,7 @@ And launch the plugin :
       });
     </script>
 
+The path option can be a string or an object with properties corresponding to the types array members, in case you need to reference videos in different locations.
 
 ## Examples
 
