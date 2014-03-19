@@ -20,7 +20,10 @@ And launch the plugin :
           "height": 720,
           "path": "media/",
           "filename": "cloud",
-          "types": ["mp4","ogg","webm"]
+          "types": ["mp4","ogg","webm"],
+          "preload": true,
+          "autoplay": true,
+          "loop": true
         });
       });
     </script>

@@ -11,7 +11,10 @@
   $.backgroundVideo = function(el, options) {
 
     var defaults = {
-      videoid: "video_background"
+      videoid: "video_background",
+      autoplay: true,
+      loop: true,
+      preload: true
     }
 
     var plugin = this;
@@ -26,8 +29,33 @@
     }
 
     var buildVideo = function () {
-      var html = '';
-      html += '<video id="'+plugin.settings.videoid+'" preload="auto" autoplay="autoplay" loop="loop"';
+      var html = '',
+          preloadString = '',
+          autoplayString = '',
+          loopString = '',
+          _preload = plugin.settings.preload,
+          _autoplay = plugin.settings.autoplay,
+          _loop = plugin.settings.loop;
+
+      if (_preload) {
+        preloadString = 'preload="auto"';
+      } else {
+        preloadString = '';
+      }
+
+      if (_autoplay) {
+        autoplayString = 'autoplay="autoplay"';
+      } else {
+        autoplayString = '';
+      }
+
+      if (_loop) {
+        loopString = 'loop="true"';
+      } else {
+        loopString = '';
+      }
+
+      html += '<video id="'+plugin.settings.videoid+'"' + preloadString + autoplayString + loopString;
 
       if (plugin.settings.poster) {
         html += ' poster="' + plugin.settings.poster + '" ';
