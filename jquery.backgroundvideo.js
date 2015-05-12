@@ -66,7 +66,7 @@
         html += '<source src="'+plugin.settings.path+plugin.settings.filename+'.'+plugin.settings.types[i]+'" type="video/'+plugin.settings.types[i]+'" />';
       }
       html += 'bgvideo</video>';
-      plugin.el.prepend(html);
+      plugin.el.html(html);
       plugin.videoEl = document.getElementById(plugin.settings.videoid);
       plugin.$videoEl = $(plugin.videoEl);
       plugin.$videoEl.fadeIn(2000);
