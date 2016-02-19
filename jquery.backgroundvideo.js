@@ -14,7 +14,8 @@
       videoid: "video_background",
       autoplay: true,
       loop: true,
-      preload: true
+      preload: true,
+      sound: true
     }
 
     var plugin = this;
@@ -33,14 +34,20 @@
           preloadString = '',
           autoplayString = '',
           loopString = '',
+          soundString = '',
           _preload = plugin.settings.preload,
           _autoplay = plugin.settings.autoplay,
           _loop = plugin.settings.loop;
+          _sound = plugin.settings.sound;
 
       if (_preload) {
         preloadString = 'preload="auto"';
       } else {
         preloadString = '';
+      }
+
+      if (!_sound) {
+        soundString = ' muted ';
       }
 
       if (_autoplay) {
@@ -55,7 +62,7 @@
         loopString = '';
       }
 
-      html += '<video id="'+plugin.settings.videoid+'"' + preloadString + autoplayString + loopString;
+      html += '<video id="'+plugin.settings.videoid+'"' + preloadString + autoplayString + loopString + soundString;
 
       if (plugin.settings.poster) {
         html += ' poster="' + plugin.settings.poster + '" ';
